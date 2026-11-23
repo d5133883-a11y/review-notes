@@ -200,7 +200,7 @@ function renderPage(dir, pon) {
     '<div class="actions">' +
     '<button class="stamp_btn wakatta' + (st === "wakatta" ? " on" : "") + '" data-stamp="wakatta">⭕ わかった</button>' +
     '<button class="stamp_btn yowa' + (st === "yowa" ? " on" : "") + '" data-stamp="yowa">🤔 よーわからん</button>' +
-    '<button class="ai_btn">🤖 いつも使ってるAIに投げるプロンプトをコピー</button>' +
+    '<button class="ai_btn">🤖 <span>いつも使ってるAIに</span><span>投げるプロンプトをコピー</span></button>' +
     "</div>" +
     '<div class="ai_box" id="ai_box">' +
     '<p class="ai_head">📋 コピーしたプロンプト（書き足してから「もう一度コピー」もできます）</p>' +

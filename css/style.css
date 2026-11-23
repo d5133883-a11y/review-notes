@@ -57,6 +57,17 @@ code, pre, .mono { font-family: Consolas, "Source Code Pro", "Courier New", mono
 }
 .lead { margin: 2px 0 6px; color: var(--gray); font-size: 15px; }
 .top_illust { width: min(560px, 100%); margin: 4px auto 0; display: block; }
+.cheer {
+  margin: 10px 0 4px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 800;
+  font-size: clamp(40px, 8vw, 84px);
+  line-height: 1.05;
+  letter-spacing: .03em;
+  color: var(--red);
+}
+.cheer span { display: inline-block; }
+.cheer span:last-child { color: var(--blue); }
 .copy_line {
   margin: 6px 0 14px;
   color: var(--gray);
@@ -235,6 +246,7 @@ main { padding: 10px 6vw 40px; }
 .stamp_btn.yowa { border-color: var(--blue); color: var(--blue); }
 .stamp_btn.yowa:hover, .stamp_btn.yowa.on { background: var(--blue); color: #fff; }
 .ai_btn { margin-left: auto; border: 1.5px solid var(--line); background: var(--paper); border-radius: 99px; padding: 8px 14px; font-size: 13px; font-weight: 700; }
+.ai_btn span { display: inline-block; }
 .ai_btn:hover { border-color: var(--ink); }
 
 /* ---------------- AIに聞く文 ---------------- */
