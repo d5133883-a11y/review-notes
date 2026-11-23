@@ -64,10 +64,9 @@ code, pre, .mono { font-family: Consolas, "Source Code Pro", "Courier New", mono
   font-size: clamp(40px, 8vw, 84px);
   line-height: 1.05;
   letter-spacing: .03em;
-  color: var(--red);
+  color: var(--blue);
 }
 .cheer span { display: inline-block; }
-.cheer span:last-child { color: var(--blue); }
 .copy_line {
   margin: 6px 0 14px;
   color: var(--gray);
