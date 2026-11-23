@@ -61,12 +61,19 @@ code, pre, .mono { font-family: Consolas, "Source Code Pro", "Courier New", mono
   margin: 10px 0 4px;
   font-family: "Barlow Condensed", sans-serif;
   font-weight: 800;
-  font-size: clamp(40px, 8vw, 84px);
+  font-size: clamp(40px, 7vw, 74px);
   line-height: 1.05;
   letter-spacing: .03em;
   color: var(--blue);
 }
 .cheer span { display: inline-block; }
+.cheer {
+  display: inline-block;
+  border: 5px solid var(--red);
+  padding: 6px 26px 10px;
+  margin: 14px auto 8px;
+}
+@media (max-width: 720px) { .cheer { border-width: 4px; padding: 4px 14px 8px; } }
 .copy_line {
   margin: 6px 0 14px;
   color: var(--gray);
