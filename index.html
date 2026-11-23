@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>G's 復習メモ帳</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@500;700;900&family=Barlow+Condensed:wght@600;800&family=Yellowtail&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+  <!-- 上の看板 -->
+  <header class="top">
+    <div class="frame">
+      <p class="script">Review Notes</p>
+      <p class="course">FUKUOKA DEV COURSE 20th ── THE FIRST MONTH</p>
+      <h1>復習メモ帳</h1>
+      <p class="lead"><span>「そういえば習ったよなー」を、</span><span>回数と日付から引っぱり出す。</span></p>
+
+      <!-- イラスト：線画＋赤と水色の差し色（机の上のノートPC・ノート・はんこ） -->
+      <svg class="top_illust" viewBox="0 0 520 190" aria-hidden="true" fill="none" stroke="#111" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+        <!-- 机 -->
+        <path d="M14 172 H506" />
+        <path d="M30 172 l-6 16 M490 172 l6 16" />
+        <!-- ノートPC -->
+        <path d="M150 60 Q150 52 158 52 H318 Q326 52 326 60 V158 H150 Z" fill="#fff" />
+        <path d="M162 64 H314 V148 H162 Z" />
+        <path d="M128 158 H348 L338 172 H138 Z" fill="#fff" />
+        <path d="M222 165 H254" />
+        <!-- 画面の中のコード -->
+        <path d="M176 80 H206" stroke="#0b9be6" stroke-width="4" />
+        <path d="M212 80 H262" stroke="#999" stroke-width="4" />
+        <path d="M188 96 H232" stroke="#999" stroke-width="4" />
+        <path d="M238 96 H282" stroke="#e60012" stroke-width="4" />
+        <path d="M188 112 H246" stroke="#999" stroke-width="4" />
+        <path d="M176 128 H198" stroke="#0b9be6" stroke-width="4" />
+        <path d="M204 128 H236" stroke="#999" stroke-width="4" />
+        <!-- ノート（見え消しの線） -->
+        <path d="M368 120 L470 108 L482 166 L378 178 Z" fill="#fff" />
+        <path d="M384 132 L462 123 M386 146 L452 138 M388 160 L440 154" stroke="#999" />
+        <path d="M382 134 L464 124" stroke="#e60012" stroke-width="3" />
+        <!-- はんこ「わかった」 -->
+        <circle cx="440" cy="62" r="34" fill="#fff" stroke="#e60012" stroke-width="3.4" />
+        <circle cx="440" cy="62" r="28" stroke="#e60012" stroke-width="1.6" />
+        <text x="440" y="68" font-size="15" font-weight="900" fill="#e60012" stroke="none" text-anchor="middle"
+          font-family="Zen Kaku Gothic New, sans-serif" transform="rotate(-14 440 62)">わかった</text>
+        <!-- ふきだし「？」 -->
+        <path d="M60 58 Q60 34 86 34 H112 Q136 34 136 58 Q136 82 112 82 H92 L76 98 L80 82 Q60 80 60 58 Z" fill="#0b9be6" stroke="#111" />
+        <text x="98" y="70" font-size="32" font-weight="800" fill="#fff" stroke="none" text-anchor="middle"
+          font-family="Barlow Condensed, sans-serif">?</text>
+        <!-- マグカップ -->
+        <path d="M66 128 H106 V164 Q106 172 98 172 H74 Q66 172 66 164 Z" fill="#fff" />
+        <path d="M106 136 Q122 136 122 148 Q122 160 106 160" />
+        <path d="M78 116 q4 -6 0 -12 M92 116 q4 -6 0 -12" stroke="#999" />
+      </svg>
+
+      <p class="copy_line"><span>ドウダッタッケ？</span>　<span>マズハ。</span>　<span>ミヨウ。</span>　<span>ワカッタラケシテ。</span>　<span>ネラエ！</span>　<span>GGA！</span></p>
+
+      <div class="progress">
+        <div class="progress_bar"><span id="progress_fill"></span></div>
+        <p id="progress_text">わかった 0 / 0</p>
+      </div>
+    </div>
+  </header>
+
+  <!-- 探す・切り替える -->
+  <nav class="tools">
+    <div class="search">
+      <span class="search_icon">🔍</span>
+      <input type="search" id="q" placeholder="うろ覚えでOK：「保存」「ランダム」「10/31」「第2回」「ろーかる」…">
+    </div>
+    <div class="tabs">
+      <button class="tab active" data-view="page">1ページずつ</button>
+      <button class="tab" data-view="list">一覧</button>
+      <button class="tab" data-view="nenpyo">回・日付から</button>
+    </div>
+  </nav>
+
+  <section class="chips">
+    <div class="chip_row" id="kinou_chips"></div>
+    <div class="chip_row">
+      <button class="chip only" data-only="">ぜんぶ</button>
+      <button class="chip only" data-only="mada">まだのだけ</button>
+      <button class="chip only" data-only="yowa">よーわからん</button>
+      <button class="chip only" data-only="mymemo">自分のメモあり</button>
+      <span class="chip_kai" id="kai_label"></span>
+    </div>
+  </section>
+
+  <main id="view"></main>
+
+  <footer class="foot">
+    <div class="foot_btns">
+      <button id="export">自分の記録を書き出す</button>
+      <label class="import">書き出した記録を読み込む<input type="file" id="import" accept=".json"></label>
+    </div>
+    <p class="note"><span>スタンプと自分のメモは、</span><span>このパソコンのこのブラウザにだけ残ります</span><span>（人には見えません）。</span><br>
+      <span>別のパソコンへ移すときや、</span><span>消える前の控えには</span><span>「書き出す」を使ってください。</span></p>
+    <p class="copy_line small"><span>ドウダッタッケ？</span>　<span>マズハ。</span>　<span>ミヨウ。</span>　<span>ワカッタラケシテ。</span>　<span>ネラエ！</span>　<span>GGA！</span></p>
+  </footer>
+
+  <!-- 全部わかったときの演出 -->
+  <div id="complete" class="complete"></div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>
